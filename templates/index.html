@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Case Data Fetcher</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        form { max-width: 500px; margin: auto; }
+        label { display: block; margin-top: 15px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 20px; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h2>Case Data Fetcher</h2>
+    <form method="POST">
+        <label for="case_type">Case Type:</label>
+        <input type="text" id="case_type" name="case_type" placeholder="e.g. WP, CRL" required>
+
+        <label for="case_number">Case Number:</label>
+        <input type="text" id="case_number" name="case_number" required>
+
+        <label for="case_year">Case Year:</label>
+        <input type="text" id="case_year" name="case_year" required>
+
+        <button type="submit">Fetch Case Data</button>
+    </form>
+</body>
+</html>

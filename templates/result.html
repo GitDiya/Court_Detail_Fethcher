@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Case Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h2 { color: #007bff; }
+        pre { background: #f8f9fa; padding: 10px; border: 1px solid #ddd; overflow-x: auto; }
+        .section { margin-bottom: 20px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h2>Extracted Case Details</h2>
+    {% for key, value in parsed.items() %}
+        <div class="section">
+            <strong>{{ key | capitalize }}:</strong>
+            {% if value is iterable and value is not string %}
+                <ul>
+                    {% for item in value %}
+                        {% if item.endswith('.pdf') %}
+                            <li><a href="{{ item }}" target="_blank">{{ item }}</a></li>
+                        {% else %}
+                            <li>{{ item }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>{{ value }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <h2>Raw HTML</h2>
+    <pre>{{ raw_html | safe }}</pre>
+
+    <p><a href="{{ url_for('index') }}">Back to Search</a></p>
+</body>
+</html>
